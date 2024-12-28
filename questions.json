@@ -14,30 +14,48 @@
       
     ],
     "Algorithme": [
-        {
-            "question": "quelle structure est utiliser our repeter une action plusieurs fois ? ",
-            "options": ["une boucle", "une condition", "une variable"],
-            "repense": "une boucle"
-            
-          },
-          {
-            "question": "quelle est la complexite moyenne de recherche dans un tableau trie ?",
-            "options": ["O(1)", "O(log n)", "O(n)"],
-            "repense": "O(log n)"
-          }
+      {
+        "question": "Quelle structure est utilisee pour repeter une action plusieurs fois ?",
+        "options": ["une boucle", "une condition", "une variable"],
+        "repense": "une boucle"
+      },
+      {
+        "question": "Quelle est la complexite moyenne de recherche dans un tableau trie ?",
+        "options": ["O(1)", "O(log n)", "O(n)"],
+        "repense": "O(log n)"
+      },
+      {
+        "question": "Comment appelle-t-on un algorithme qui divise un probleme en sous-problemes ?",
+        "options": ["Programmation dynamique", "Diviser pour regner", "Recherche lineaire"],
+        "repense": "Diviser pour regner"
+      },
+      {
+        "question": "Quel algorithme de tri a une complexite moyenne en O(n log n) ?",
+        "options": ["Tri par insertion", "Tri rapide", "Tri a bulles"],
+        "repense": "Tri rapide"
+      }
     ],
     "Reseau": [
-        {
-            "question": "Quel dispositif est utilise pour connecter plusieurs appareils sur un reseau local ?",
-            "options": ["Un Switch", "Un pare-feu", "Un Modem"],
-            "repense": "Un Switch"
-            
-          },
-          {
-            "question": "Quel protocole est utiliser pour envoye des courriels",
-            "options": ["HTTP", "SMTP", "FTP"],
-            "repense": "SMTP"
-          }
+      {
+        "question": "Quel dispositif est utilise pour connecter plusieurs appareils sur un reseau local ?",
+        "options": ["Un Switch", "Un pare-feu", "Un Modem"],
+        "repense": "Un Switch"
+      },
+      {
+        "question": "Quel protocole est utilise pour envoyer des courriels ?",
+        "options": ["HTTP", "SMTP", "FTP"],
+        "repense": "SMTP"
+      },
+      {
+        "question": "Quelle est la couche du modele OSI responsable de ladressage IP ?",
+        "options": ["Couche reseau", "Couche transport", "Couche application"],
+        "repense": "Couche reseau"
+      },
+      {
+        "question": "Quel est le role principal d'un routeur ?",
+        "options": ["Acheminer les paquets", "Proteger le reseau", "Connecter les cables"],
+        "repense": "Acheminer les paquets"
+      }
     ]
   }
   

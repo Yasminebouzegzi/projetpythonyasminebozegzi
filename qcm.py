@@ -21,7 +21,7 @@ def sauvegarde_utilisateur(utilisateur):
 
 
 
-def get_or_create_user():
+def recup_creer_user():
     utilisateur = recup_utilisateur()
     username = input("Entrez votre nom d'utilisateur : ")
 
@@ -39,7 +39,7 @@ def get_or_create_user():
 
 # Gestion des Questions
 
-def load_questions():
+def recup_questions():
     if os.path.exists(question_fichier):
         with open(question_fichier, "r") as file:
             return json.load(file)
@@ -47,11 +47,97 @@ def load_questions():
       print("Le fichier de questions est introuvable !")
 
 
-def select_category(questions):
+def selection_categorie(questions):
     print("Catégories disponibles :")
     categories = list(questions.keys())
-    for i, category in enumerate(categories, start=1):
-        print(f"{i}. {category}")
+    
+    # Afficher les catégories avec un numéro
+    for i in range(len(categories)):
+        print(f"{i + 1}. {categories[i]}")
+    
+    # Demander à l'utilisateur de choisir une catégorie
+    while True:
+        try:
+            choice = int(input("Choisissez une catégorie : ")) - 1
+            if 0 <= choice < len(categories):
+                return categories[choice]
+            else:
+                print("Choix invalide. Veuillez entrer un numéro valide.")
+        except ValueError:
+            print("Veuillez entrer un numéro valide.")
+            
+###############################################################################################
+# interaction utilisateur 
 
-    choice = int(input("Choisissez une catégorie : ")) - 1
-    return categories[choice]
+def pose_questions(questions):
+    score = 0
+    i = 1  # Compteur pour les questions
+    for question in questions:
+        print(f"\nQuestion {i}: {question['question']}")
+        
+        j = 1  # Compteur pour les options
+        for option in question['options']:
+            print(f"{j}. {option}")
+            j += 1  # Incrémenter le compteur des options
+
+        try:
+            answer = int(input("Votre réponse : ")) - 1
+            if question['options'][answer] == question['repense']:
+                print("Bonne réponse !")
+                score += 1
+            else:
+                print(f"Mauvaise réponse. La bonne réponse était : {question['repense']}")
+        except (ValueError, IndexError):
+            print(f"Réponse invalide. La bonne réponse était : {question['repense']}")
+
+        i += 1  # Incrémenter le compteur des questions
+
+    return score
+
+
+
+def export_resultat(username, history):
+    filename = f"{username}_results.csv"
+    with open(filename, "w") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(["Date", "Score"])
+        for entry in history:
+            writer.writerow([entry['date'], entry['score']])
+
+    print(f"Les résultats ont été exportés dans le fichier : {filename}")
+
+
+#######################################################
+#   MAIN   
+
+def main():
+    print("Bienvenue au QCM Informatique !")
+    username, users = recup_creer_user()
+
+    try:
+        questions_data = recup_questions()
+        category = selection_categorie(questions_data)
+        questions = questions_data[category]
+
+        score = pose_questions(questions)
+        print(f"\nVotre score final : {score}/{len(questions)}")
+
+        # Sauvegarde de l'historique
+        users[username]["history"].append({
+            "date": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "score": score
+        })
+        sauvegarde_utilisateur(users)
+
+        # Exportation optionnelle
+        export = input("Voulez-vous exporter vos résultats ? (o/n) : ").strip().lower()
+        if export == 'o':
+            export_resultat(username, users[username]["history"])
+
+    except FileNotFoundError as e:
+        print(e)
+    except Exception as e:
+        print(f"Une erreur est survenue : {e}")
+
+if __name__ == "__main__":
+    main()
