@@ -1,0 +1,43 @@
+{
+    "Python": [
+      {
+        "question": "Quel est le type de donnees pour du texte ?",
+        "options": ["int", "str", "list"],
+        "repense": "str"
+        
+      },
+      {
+        "question": "Quelle est la fonction pour afficher un message en Python ?",
+        "options": ["print()", "input()", "len()"],
+        "repense": "print()"
+      }
+      
+    ],
+    "Algorithme": [
+        {
+            "question": "quelle structure est utiliser our repeter une action plusieurs fois ? ",
+            "options": ["une boucle", "une condition", "une variable"],
+            "repense": "une boucle"
+            
+          },
+          {
+            "question": "quelle est la complexite moyenne de recherche dans un tableau trie ?",
+            "options": ["O(1)", "O(log n)", "O(n)"],
+            "repense": "O(log n)"
+          }
+    ],
+    "Reseau": [
+        {
+            "question": "Quel dispositif est utilise pour connecter plusieurs appareils sur un reseau local ?",
+            "options": ["Un Switch", "Un pare-feu", "Un Modem"],
+            "repense": "Un Switch"
+            
+          },
+          {
+            "question": "Quel protocole est utiliser pour envoye des courriels",
+            "options": ["HTTP", "SMTP", "FTP"],
+            "repense": "SMTP"
+          }
+    ]
+  }
+  
